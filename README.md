@@ -3,7 +3,7 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null :false|
+|user_name|string|null :false|
 |email|string|null :false|
 |password|string|null :false|
 ### Association
@@ -13,7 +13,7 @@
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null :false|
+|group_name|string|null :false|
 ### Association
 - belongs_to :user
 - has_many :message 
