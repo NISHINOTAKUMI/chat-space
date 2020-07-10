@@ -16,9 +16,9 @@
 |------|----|-------|
 |name|string|null :false|
 ### Association
-- has_many :users
 - has_many :messages
 - has_many :users, through: :users_groups
+- has_many :user_groups
 
 ## users_groupsテーブル
 |Column|Type|Options|
@@ -32,7 +32,7 @@
 |text|text||
 |user_id|integer|null: false, foreign_key: true|
 |image|text||
-|group_id|integer||
+|group_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :group
