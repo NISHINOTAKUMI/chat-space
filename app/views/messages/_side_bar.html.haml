@@ -5,19 +5,19 @@
         = current_user.name
 
       .side-bar__icons
-        = link_to "#" do
+        = link_to new_group_path do
           = icon('far', 'edit')
         = link_to edit_user_path(current_user) do
           = icon('fas', 'cog')
 
-  .side-bar__group1
-    .side-bar__group1-name
-      techcamp
-    .side-bar__group1-message
-      まだメッセージがありません
+  .group_list
+    - current_user.groups.each do |group|
+      .side-bar__group
+        = link_to '#' do
+          .side-bar__group-name
+            = group.name
+          .side-bar__group-message
+            まだメッセージがありません
 
-  .side-bar__group2
-    .side-bar__group2-name
-      hoge-hoge
-    .side-bar__group2-message
-      fuga-fuga
+
+      
