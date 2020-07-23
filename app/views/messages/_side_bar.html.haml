@@ -11,11 +11,10 @@
           = icon('fas', 'cog')
   .group_list
     - current_user.groups.each do |group|
-      = link_to group_messages_path(group) do
-        .side-bar__group
-          = link_to group_messages_path(group) do
-            .side-bar__group-name
-              = group.name
-            .side-bar__group-message
-              = group.show_last_message
+      .side-bar__group
+        = link_to group_messages_path(group) do
+          .side-bar__group-name
+            = group.name
+          .side-bar__group-message
+            = group.show_last_message
 
