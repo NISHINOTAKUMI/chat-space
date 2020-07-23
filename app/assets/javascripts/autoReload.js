@@ -1,17 +1,18 @@
 $(function(){
+  console.log(last_message_id)
   function buildHTML(message){
     if ( message.image ) {
       let html =
-        `<div class="MessageBox" data-message-id=${message.id}>
-          <div class="MessageInfo">
-            <div class="MessageInfo__userName">
+        `<div class="main-chat__message" data-message-id=${message.id}>
+          <div class="main-chat__name_and_time">
+            <div class="main-chat__name">
               ${message.user_name}
             </div>
-            <div class="MessageInfo__date">
+            <div class="main-chat__time">
               ${message.created_at}
             </div>
           </div>
-          <div class="Message">
+          <div class="main-chat__comment">
             <p class="Message__content">
               ${message.content}
             </p>
@@ -21,16 +22,16 @@ $(function(){
       return html;
     } else {
       let html =
-      `<div class="MessageBox" data-message-id=${message.id}>
-        <div class="MessageInfo">
-          <div class="MessageInfo__userName">
+      `<div class="main-chat__message" data-message-id=${message.id}>
+        <div class="main-chat__name_and_time">
+          <div class="main-chat__name">
             ${message.user_name}
           </div>
-          <div class="MessageInfo__date">
+          <div class="main-chat__time">
             ${message.created_at}
           </div>
         </div>
-        <div class="Message">
+        <div class="main-chat__comment">
           <p class="Message__content">
             ${message.content}
           </p>
