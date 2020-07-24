@@ -1,6 +1,4 @@
 $(function(){
-  let last_message_id = $('.MessageBox:last').data("message-id") || 0;
-  console.log(last_message_id)
   function buildHTML(message){
     if ( message.image ) {
       let html =
@@ -44,15 +42,15 @@ $(function(){
 
   let reloadMessages = function() {
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
-    let last_message_id = $('.MessageBox:last').data("message-id") || 0;
+    let last_message_id = $('.main-chat__message:last').data("message-id") || 0;
     $.ajax({
       //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
       url: "api/messages",
       //ルーティングで設定した通りhttpメソッドをgetに指定
       type: 'get',
-      dataType: 'json',
+      data: {id: last_message_id},
+      dataType: 'json'
       //dataオプションでリクエストに値を含める
-      data: {id: last_message_id}
     })
     .done(function(messages) {
       // 更新するメッセージがなかった場合は.doneの後の処理が動かないようにする
@@ -64,8 +62,8 @@ $(function(){
           insertHTML += buildHTML(message)
         });
         //メッセージが入ったHTMLに、入れ物ごと追加
-        $('.MessageField').append(insertHTML);
-        $('.MessageField').animate({ scrollTop: $('.MessageField')[0].scrollHeight});
+        $('.main-chat__message-form').append(insertHTML);
+        $('.main-chat__message-form').animate({ scrollTop: $('.main-chat__message-form')[0].scrollHeight});
       }
     })
     .fail(function() {

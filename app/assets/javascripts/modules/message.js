@@ -1,6 +1,4 @@
 $(function(){
-  let last_message_id = $('.MessageBox:last').data("message-id") || 0;
-  console.log(last_message_id)
   function buildHTML(message){
     if ( message.image ) {
       let html =
